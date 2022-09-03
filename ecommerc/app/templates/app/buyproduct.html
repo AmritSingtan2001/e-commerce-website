@@ -1,0 +1,346 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Tropiko</title>
+
+  <!-- slider stylesheet -->
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'app/css/bootstrap.css' %}" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'app/css/style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'app/css/responsive.css' %}" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="hero_area sub_pages">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
+          <a class="navbar-brand" href="/">
+            <img src="{%static 'app/images/logo.png' %}" alt="" /><span>
+              Tropiko
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'furits' %}"> Fruits</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'services' %}"> Services </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'contact' %}">Contact us</a>
+                </li>
+              <li>
+                <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0" method="post" action="#">
+                  {% csrf_token %}
+                  <input type="search" placeholder="search here... " class="form-control me-2" style="border-radius: 70px;" ><button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
+                </form>
+              </li>
+            </ul>
+              <div style="padding-left:10px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                  <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                </svg><samp class="position-absolute top-0 lef-0 translate-middle badge rounded-pill bg-dark text-white">7</samp>
+              </div>
+              <div style="padding-left:20px;">
+                <a href="{% url 'show' %}"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                  
+                </svg></a><samp class="position-absolute top-0 lef-0 translate-middle badge rounded-pill bg-dark text-white"><spam class="badge badge-info">{{request.session.cart.keys|length}} </spam></samp>
+              </div>
+            </div>
+            <div class="quote_btn-container ml-0 ml-lg-4 d-flex justify-content-center">
+              <a href="">
+                Get A quote
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+<br><br>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md bg-light shadow p-3 mb-5 bg-body rounded">
+            <center><img src="{{info.image.url}}" height="400px" width="400px" ></center>
+        </div>
+        <div class="col-md ">
+                <h1 class="slider_item-detail">{{info.product_name}}</h1>
+                <p style="font-family: serif;">
+                    Price :{{info.price}}<br>
+                    <!-- Quantities:<input type="number"  name='quantity' value="{{info.quantity}}" ><br> -->
+                    Discription of Product:
+                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Distinctio incidunt ex sit 
+                    velit praesentium natus accusantium, excepturi tempore odit blanditiis nihil saepe,
+                     libero est facere perspiciatis illo. Aliquam, voluptatum odit!</p>
+
+                     <div class="d-flex">
+                      
+                        {{cart.as_p}}
+                      
+
+                      <form method="post"  action="/add" class="d-inline">
+                        {% csrf_token  %}
+                        <input type="hidden" name ="p_id"  value="{{info.id}}" id="p_id">
+                        Quantities:<input type="number"  name='quantity' ><br><br>
+                        <button class="btn btn-outline-primary shadow" type="submit" >Add to Cart</button>
+                      </form>
+                        
+                      </div>
+
+                </p>
+        </div>
+    </div>
+</div>
+
+<br>-
+
+
+
+<div class="container">
+    <h1>Related Products</h1>
+    
+
+    <div class="row">
+        
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 card">
+                <div class="hovereffect">
+                    <img class="img-responsive" src="{% static 'app/images/banana.jpg'%}" height="150px" width="150px" alt="">
+                    <div class="overlay">
+                    <h2>Banana</h2>
+                    <a class="info" href="">Buy Now</a>
+                    </div>
+                </div>
+               <center>Banana</center> 
+            </div>
+    
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 card">
+            <div class="hovereffect">
+                <img class="img-responsive" src="{% static 'app/images/orange.png'%}" height="150px" width="150px" alt="">
+                <div class="overlay">
+                   <h2>Orange</h2>
+                   <a class="info" href="">Buy Now</a>
+
+                </div>
+            </div>
+            <center>Orange</center>
+        </div>
+    
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 card">
+            <div class="hovereffect">
+                <img class="img-responsive" src="{% static 'app/images/mango.jpg'%}" height="150px" width="150px" alt="">
+                <div class="overlay">
+                   <h2>Mango</h2>
+                   <a class="info" href="">Buy Now</a>
+                </div>
+            </div>
+            <center>Mango</center>
+        </div>
+    
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12 card">
+            <div class="hovereffect">
+                <img class="img-responsive" src="{% static 'app/images/banana.jpg'%}" height="150px" width="150px" alt="">
+                <div class="overlay">
+                   <h2>Banana</h2>
+                   <a class="info" href="">Buy Now</a>
+                </div>
+            </div>
+            <center>Banana</center>
+        </div>
+
+    </div><br><br>
+
+
+
+
+<section class="info_section layout_padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <h5>
+            Fruits
+          </h5>
+          <ul>
+            <li>
+              randomised
+            </li>
+            <li>
+              words which
+            </li>
+            <li>
+              don't look even
+            </li>
+            <li>
+              slightly
+            </li>
+            <li>
+              believable. If you
+            </li>
+            <li>
+              are going to use
+            </li>
+            <li>
+              a passage of
+            </li>
+            <li>
+              Lorem Ipsum,
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>
+            Services
+          </h5>
+          <ul>
+            <li>
+              randomised
+            </li>
+            <li>
+              words which
+            </li>
+            <li>
+              don't look even
+            </li>
+            <li>
+              slightly
+            </li>
+            <li>
+              believable. If you
+            </li>
+            <li>
+              are going to use
+            </li>
+            <li>
+              a passage of
+            </li>
+            <li>
+              Lorem Ipsum,
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <h5>
+            List
+          </h5>
+          <ul>
+            <li>
+              randomised
+            </li>
+            <li>
+              words which
+            </li>
+            <li>
+              don't look even
+            </li>
+            <li>
+              slightly
+            </li>
+            <li>
+              believable. If you
+            </li>
+            <li>
+              are going to use
+            </li>
+            <li>
+              a passage of
+            </li>
+            <li>
+              Lorem Ipsum,
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-3">
+          <div class="social_container">
+            <h5>
+              Follow Us
+            </h5>
+            <div class="social-box">
+              <a href="">
+                <img src="{% static 'app/images/fb.png' %}" alt="">
+              </a>
+
+              <a href="">
+                <img src="{% static 'app/images/twitter.png' %}" alt="">
+              </a>
+              <a href="">
+                <img src="{% static 'app/images/linkedin.png' %}" alt="">
+              </a>
+              <a href="">
+                <img src="{% static 'app/images/instagram.png' %}" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="subscribe_container">
+            <h5>
+              Subscribe Now
+            </h5>
+            <div class="form_container">
+              <form action="">
+                <input type="email">
+                <button type="submit">
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- footer section -->
+ <section class="container-fluid footer_section">
+    <p>
+      Copyright &copy; 2019 All Rights Reserved By
+      <a href="https://html.design/">Free Html Templates</a>
+    </p>
+  </section>
+  <!-- footer section -->
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+  </html>
